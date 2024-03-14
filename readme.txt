@@ -1,6 +1,2 @@
-Thanks for downloading this theme!
-
-Theme Name: Bethany
-Theme URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
-Author: BootstrapMade.com
-Author URL: https://bootstrapmade.com
+2024_01 SW 인재양성 프로젝트
+게시판 만들기
