@@ -42,6 +42,15 @@
         });
       //document.querySelector('#detail').innerHTML = output;
     };
+   
+    function deletePost(id){
+            fetch(`${requestUrl}/${id}` , {
+                method: "DELETE" 
+             })
+            .then((response) => response.json())
+            .then((result) =>console.log(result) ) 
+            .then((result) => location.reload() ) // 화면 새로고침
+        }
 
 
     //웹브라우저에 이 페이지가 로드완료되면  다음 코드 실행   
@@ -60,6 +69,7 @@
               <div class="icon-text">
               <h3 class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></h3>
               <p class="txt-para">${posts.name}</p>
+              <button onclick="deletePost(${posts.id});">삭제</button>
             </div>`;
             });
             // 결과를 화면에 표시
