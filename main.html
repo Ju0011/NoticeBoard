@@ -6,18 +6,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ju0011's board</title>
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <meta name="keywords"
+    content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet'
+    type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/animate.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <!--me-->
+  <script src="./posts/common/common.js"></script>
+
   <!-- =======================================================
     Theme Name: Bethany
     Theme URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+
+  <script>
+
+    requestUrl = `${backEndDomain}/posts`
+
+    var detailDiv = ""
+    function detailView(id) {
+      let output = '';
+      // id외 속성으로 조회 시에 쿼리 스티링 ==>  http://localhost:3000/boards?red_dtm=2024-03-11
+      // id 속성 값으로 조회 시에는 아래와 같이 PathParameter ==> http://localhost:3000/boards/1
+      fetch(`${requestUrl}/${id}`, { method: "GET" })
+        .then((response) => response.json())
+        .then(json => {
+          output = `<ul>
+                        <li>번호: ${posts.id} </li>
+                        <li>이름 : ${posts.name} </li>
+                 <li>제목 : ${posts.title}</li> 
+                        </ul>
+                <hr>    `
+        });
+        document.querySelector('#detail').innerHTML = output;
+    };
+
+
+
+    //웹브라우저에 이 페이지가 로드완료되면  다음 코드 실행   
+    window.onload = function () {  // http://localhost:3000/posts     
+      detailDiv = document.querySelector("#detail")
+
+      function data_view() {
+        //get method
+        fetch(requestUrl)
+          .then(response => response.json()) // json response => 객체     
+          .then(json => {
+            let output = '';
+            // 각 학생에 대한 정보를 반복하여 출력 문자열에 추가
+            json.forEach(posts => {
+              output += `
+              <ul>
+                        <li>번호: ${posts.id} </li>
+                        <li>이름 : ${posts.name} </li>
+                 <li>제목 : ${posts.title}</li> 
+                        </ul>
+                <hr>    `;
+            });
+            // 결과를 화면에 표시
+            document.querySelector('#result').innerHTML = output;
+          }).catch(error => console.log(error));
+      };
+
+      // function data_view(index_num) {
+      //   console.log(index_num)
+      //   //get method
+      //   fetch(requestUrl)
+      //     .then(response => response.json()) // json response => 객체
+      //     .then(json => {
+      //       // index_num과 일치하는 학생 찾기
+      //       const posts = json.find(post => post.id === index_num);
+      //       if (posts) {
+      //         // 일치하는 학생이 있을 경우에만 출력
+      //         const output = `
+      //               <ul>
+      //                   <li>번호: ${posts.id} </li>
+      //                   <li>이름 : ${posts.name} </li>
+      //                   <li>제목 : ${posts.title}</li> 
+      //               </ul>
+      //               <hr>`;
+      //         // 결과를 화면에 표시
+      //         document.querySelector('#result').innerHTML = output;
+      //       } else {
+      //         // 일치하는 학생이 없을 경우 메시지 표시
+      //         document.querySelector('#result').innerHTML = '해당 멤버를 찾을 수 없습니다.';
+      //       }
+      //     }).catch(error => console.log(error));
+      // };
+      data_view();
+    }  
+  </script>
 </head>
 
 <body>
@@ -29,9 +113,10 @@
         <div class="container">
           <div class="col-md-12">
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="fa fa-bars"></span>
-                        </button>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="fa fa-bars"></span>
+              </button>
               <a href="index.html" class="navbar-brand">AboutCat</a>
             </div>
             <div class="collapse navbar-collapse navbar-right" id="mynavbar">
@@ -51,7 +136,7 @@
           <h2 class="top-title">top-title</h2>
           <h3 class="title">AboutCat</h3>
           <h4 class="sub-title">postingCat</h4>
-          
+
         </div>
       </div>
     </div>
@@ -62,8 +147,9 @@
     <div class="container">
       <div class="row">
         <div class="cta-info text-center">
-          <h3><span class="dec-tec">“</span>Every smallest feline is a masterpiece.<span class="dec-tec">”</span> 
-            <h4>-Leonardo di ser Piero da Vinci</h4></h3>
+          <h3><span class="dec-tec">“</span>Every smallest feline is a masterpiece.<span class="dec-tec">”</span>
+            <h4>-Leonardo di ser Piero da Vinci</h4>
+          </h3>
         </div>
       </div>
     </div>
@@ -77,7 +163,8 @@
           <div class="section-title">
             <h2 class="head-title">Posts</h2>
             <hr class="botm-line">
-            <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+            <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua..</p>
           </div>
         </div>
         <div class="col-md-9">
@@ -86,8 +173,13 @@
               <i class="fa fa-paint-brush"></i>
             </div>
             <div class="icon-text">
-              <h3 class="txt-tl">Easy to Learn and Design</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+              <div id="result">
+                <div id="detail">상세 정보 나올 곳</div>
+                <!-- <script>
+                  data_view(1);
+                  
+                </script> -->
+              </div>
             </div>
           </div>
           <div class="col-md-6 wow fadeInRight delay-02s">
@@ -95,8 +187,9 @@
               <i class="fa fa-cogs"></i>
             </div>
             <div class="icon-text">
-              <h3 class="txt-tl">Bootstrap 3.3.2</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+              <h3 class="txt-tl">게시글2</h3>
+              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
+                euismod semper. </p>
             </div>
           </div>
           <div class="col-md-6 wow fadeInRight delay-04s">
@@ -104,8 +197,9 @@
               <i class="fa fa-mobile"></i>
             </div>
             <div class="icon-text">
-              <h3 class="txt-tl">Responsive Design</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+              <h3 class="txt-tl">게시글3</h3>
+              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
+                euismod semper. </p>
             </div>
           </div>
           <div class="col-md-6 wow fadeInRight delay-04s">
@@ -114,7 +208,8 @@
             </div>
             <div class="icon-text">
               <h3 class="txt-tl">No Coding, No Shortcodes</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
+                euismod semper. </p>
             </div>
           </div>
           <div class="col-md-6 wow fadeInRight delay-06s">
@@ -123,7 +218,8 @@
             </div>
             <div class="icon-text">
               <h3 class="txt-tl">High Coversion</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
+                euismod semper. </p>
             </div>
           </div>
           <div class="col-md-6 wow fadeInRight delay-06s">
@@ -132,7 +228,8 @@
             </div>
             <div class="icon-text">
               <h3 class="txt-tl">Save Tons of Time</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis euismod semper. </p>
+              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
+                euismod semper. </p>
             </div>
             <button type="submit" class="btn btn-submit">More</button>
           </div>
@@ -146,12 +243,13 @@
       <div class="row">
         <div class="col-md-8">
           <div class="cta-txt">
-            <h3>Subscribe For Updates</h3>
-            <p>Join our 1000+ subscribers and get access to the latest tools, freebies, product announcements and much more!</p>
+            <h3>Join For Updates</h3>
+            <p>Join our 1000+ subscribers and get access to the latest tools, freebies, product announcements and much
+              more!</p>
           </div>
         </div>
         <div class="col-md-4 text-center">
-          <a href="#" class="btn btn-submit">Subscribe Now</a>
+          <a href="#" class="btn btn-submit">Join Now</a>
         </div>
       </div>
     </div>
@@ -165,7 +263,7 @@
           <div class="section-title">
             <h2 class="head-title">ABOUT_JU00</h2>
             <hr class="botm-line">
-            <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+            <p class="sec-para">서경대학교 21학번 소프트웨어학과</p>
           </div>
         </div>
         <div class="col-md-9 col-sm-12">
@@ -212,7 +310,8 @@
           <div class="section-title">
             <h2 class="head-title black">Technology</h2>
             <hr class="botm-line">
-            <p class="sec-para black">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</p>
+            <p class="sec-para black">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua..</p>
           </div>
         </div>
         <div class="col-md-12 col-sm-12">
@@ -223,21 +322,25 @@
             <div class="contact-info">
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
-                </div>
-
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                    data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validation"></div>
                 </div>
 
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                    data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validation"></div>
+                </div>
+
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required"
+                    data-msg="Please write something for us" placeholder="Message"></textarea>
                   <div class="validation"></div>
                 </div>
                 <button type="submit" class="btn btn-send">Send</button>
@@ -248,9 +351,11 @@
           <div class="col-md-4 col-sm-6">
             <h3 class="cont-title">Visit Us</h3>
             <div class="location-info">
-              <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>Via Principe Amedeo 9, Torino, Italy</p>
+              <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>Via Principe Amedeo 9, Torino,
+                Italy</p>
               <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Phone: 0039 333 12 68 347</p>
-              <p class="white"><span aria-hidden="true" class="fa fa-envelope"></span>Email: <a href="" class="link-dec">hi@yourdomain.com</a></p>
+              <p class="white"><span aria-hidden="true" class="fa fa-envelope"></span>Email: <a href=""
+                  class="link-dec">hi@yourdomain.com</a></p>
             </div>
           </div>
           <div class="col-md-4">
@@ -270,12 +375,7 @@
         <div class="col-sm-7 footer-copyright">
           © Bethany Theme - All rights reserved
           <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Bethany
-            -->
+
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
           </div>
         </div>
@@ -300,5 +400,9 @@
   <script src="js/custom.js"></script>
   <script src="contactform/contactform.js"></script>
 
+
+
+
 </body>
+
 </html>
