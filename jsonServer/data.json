@@ -4,8 +4,8 @@
             "id": 1,
             "name": "박주영",
             "title": "고양이 입양 문의",
-            "marks": {
-                "maths": 80,
+            "detail": {
+                "maths": "코숏고양이",
                 "physics": 50,
                 "chemistry": 35
             }
@@ -14,7 +14,7 @@
             "id": 2,
             "name": "김주영",
             "title": "고양이 입양 문의",
-            "marks": {
+            "detail": {
                 "maths": 70,
                 "physics": 50,
                 "chemistry": 65
@@ -24,7 +24,7 @@
             "id": 3,
             "name": "이주영",
             "title": "고양이 입양 문의",
-            "marks": {
+            "detail": {
                 "maths": 80,
                 "physics": 20,
                 "chemistry": 90
@@ -34,11 +34,12 @@
     ],
     "logs": [
         {
+            "id": 1,
           "message": "Changed network card in server 007",
           "attention": false,
           "tech": "Sam Smith",
-          "date": "2019-05-31T15:46:10.179Z",
-          "id": 1
+          "date": "2019-05-31T15:46:10.179Z"
+          
         },
         {
           "id": 2,

@@ -26,34 +26,29 @@
   ======================================================= -->
 
   <script>
-
     requestUrl = `${backEndDomain}/posts`
 
     var detailDiv = ""
-    function detailView(id) {
+
+    function detail_View(id) {
       let output = '';
-      // id외 속성으로 조회 시에 쿼리 스티링 ==>  http://localhost:3000/boards?red_dtm=2024-03-11
-      // id 속성 값으로 조회 시에는 아래와 같이 PathParameter ==> http://localhost:3000/boards/1
+      // id외 속성으로 조회 시에 쿼리 스티링 ==>  http://localhost:3000/posts?red_dtm=2024-03-11
+      // id 속성 값으로 조회 시에는 아래와 같이 PathParameter ==> http://localhost:3000/posts/1
       fetch(`${requestUrl}/${id}`, { method: "GET" })
         .then((response) => response.json())
         .then(json => {
-          output = `<ul>
-                        <li>번호: ${posts.id} </li>
-                        <li>이름 : ${posts.name} </li>
-                 <li>제목 : ${posts.title}</li> 
-                        </ul>
-                <hr>    `
+          output = `<tr><td>${json.detail.maths}</td></tr>`
+                detailDiv.innerHTML = output; 
         });
-        document.querySelector('#detail').innerHTML = output;
+        //document.querySelector('#detail').innerHTML = output;
     };
-
 
 
     //웹브라우저에 이 페이지가 로드완료되면  다음 코드 실행   
     window.onload = function () {  // http://localhost:3000/posts     
       detailDiv = document.querySelector("#detail")
 
-      function data_view() {
+      function data_View() {
         //get method
         fetch(requestUrl)
           .then(response => response.json()) // json response => 객체     
@@ -62,44 +57,32 @@
             // 각 학생에 대한 정보를 반복하여 출력 문자열에 추가
             json.forEach(posts => {
               output += `
-              <ul>
-                        <li>번호: ${posts.id} </li>
-                        <li>이름 : ${posts.name} </li>
-                 <li>제목 : ${posts.title}</li> 
-                        </ul>
-                <hr>    `;
+              <div class="icon-text">
+              <h3 class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></h3>
+              <p class="txt-para">${posts.name}</p>
+            </div>`;
             });
             // 결과를 화면에 표시
             document.querySelector('#result').innerHTML = output;
           }).catch(error => console.log(error));
       };
 
-      // function data_view(index_num) {
-      //   console.log(index_num)
-      //   //get method
-      //   fetch(requestUrl)
-      //     .then(response => response.json()) // json response => 객체
-      //     .then(json => {
-      //       // index_num과 일치하는 학생 찾기
-      //       const posts = json.find(post => post.id === index_num);
-      //       if (posts) {
-      //         // 일치하는 학생이 있을 경우에만 출력
-      //         const output = `
-      //               <ul>
-      //                   <li>번호: ${posts.id} </li>
-      //                   <li>이름 : ${posts.name} </li>
-      //                   <li>제목 : ${posts.title}</li> 
-      //               </ul>
-      //               <hr>`;
-      //         // 결과를 화면에 표시
-      //         document.querySelector('#result').innerHTML = output;
-      //       } else {
-      //         // 일치하는 학생이 없을 경우 메시지 표시
-      //         document.querySelector('#result').innerHTML = '해당 멤버를 찾을 수 없습니다.';
-      //       }
-      //     }).catch(error => console.log(error));
-      // };
-      data_view();
+    //   function data_View(id) {
+    //   let output = '';
+    //   fetch(`${requestUrl}/${id}`, { method: "GET" })
+    //     .then((response) => response.json())
+    //     .then(json => {
+    //       output = `<div class="icon-text">
+    //           <h3 class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></h3>
+    //           <p class="txt-para">${posts.name}</p>
+    //         </div>`
+    //             detailDiv.innerHTML = output; 
+    //     });
+    //     document.querySelector('#result').innerHTML = output;
+    // };
+
+
+      data_View();
     }  
   </script>
 </head>
@@ -173,13 +156,10 @@
               <i class="fa fa-paint-brush"></i>
             </div>
             <div class="icon-text">
-              <div id="result">
-                <div id="detail">상세 정보 나올 곳</div>
-                <!-- <script>
-                  data_view(1);
-                  
-                </script> -->
-              </div>
+              <div id="result"></div>
+              <!-- <script>data_View(1)</script> -->
+              
+              <div id="detail">상세 정보 나올 곳</div>
             </div>
           </div>
           <div class="col-md-6 wow fadeInRight delay-02s">
