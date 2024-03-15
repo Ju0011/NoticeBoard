@@ -170,6 +170,30 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff;
 }
 
+.btn-post {
+  /*background: #FFD34E;*/
+  background: #99cf6d;
+  border: 0px;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 10px 40px;
+  font-weight: normal;
+  border-radius: 0px;
+  letter-spacing: 1px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  margin-top: 25px;
+  /*border: 2px solid #FFD34E;*/
+  border: 2px solid #99cf6d;
+  float: right;
+}
+
 /****/
 
 #cta-1 {

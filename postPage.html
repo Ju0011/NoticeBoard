@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기</title>
+    <script src="./posts/common/common.js"></script>
+    
+    <script>
+        requestUrl = `${backEndDomain}/posts`
+ 
+        //웹브라우저에 이 페이지가 로드완료되면  다음 코드 실행   
+        window.onload = function () {  // http://localhost:3000/posts     
+             
+    
+          document.querySelector("#addPost").onsubmit =
+            function(event) {
+              event.preventDefault();  //이벤트의 기본 핸들러 동작 못하게 함. 
+    
+              bodyString = JSON.stringify({  // javascript 객체를 json 문자열로 바꿈 
+                id: document.querySelector("#id").value,
+                name: document.querySelector("#name").value,
+                title: document.querySelector("#title").value
+              });
+    
+              // post method
+              fetch(requestUrl,
+                {
+                  method: "POST",  // POST 요청 
+                  headers: { "Content-Type": "application/json" },
+                  body: bodyString
+                }
+              )
+                .then((response) => response.json())
+                .then((result) => {
+                  console.log(result);
+                  window.close();   // 등록 후 화면 닫기
+                });
+            }
+    
+        }  
+      </script>
+</head>
+
+<body>
+    <form id="addPost" ACION="" >
+        제목 <input type="text"  id="title"/><br>
+        id <input type="number" id="id"  /><br>
+        이름 <input type="text" id="name"  /><br>
+        <input type="submit" value="게시글 등록"/>
+     </form>
+</body>
+
+</html>

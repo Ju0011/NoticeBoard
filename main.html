@@ -37,10 +37,10 @@
       fetch(`${requestUrl}/${id}`, { method: "GET" })
         .then((response) => response.json())
         .then(json => {
-          output = `<tr><td>${json.detail.maths}</td></tr>`
-                detailDiv.innerHTML = output; 
+          output = `<tr><td>${json.detail.cont}</td></tr>`
+          detailDiv.innerHTML = output;
         });
-        //document.querySelector('#detail').innerHTML = output;
+      //document.querySelector('#detail').innerHTML = output;
     };
 
 
@@ -67,22 +67,32 @@
           }).catch(error => console.log(error));
       };
 
-    //   function data_View(id) {
-    //   let output = '';
-    //   fetch(`${requestUrl}/${id}`, { method: "GET" })
-    //     .then((response) => response.json())
-    //     .then(json => {
-    //       output = `<div class="icon-text">
-    //           <h3 class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></h3>
-    //           <p class="txt-para">${posts.name}</p>
-    //         </div>`
-    //             detailDiv.innerHTML = output; 
-    //     });
-    //     document.querySelector('#result').innerHTML = output;
-    // };
+      //   function data_View(id) {
+      //   let output = '';
+      //   fetch(`${requestUrl}/${id}`, { method: "GET" })
+      //     .then((response) => response.json())
+      //     .then(json => {
+      //       output = `<div class="icon-text">
+      //           <h3 class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></h3>
+      //           <p class="txt-para">${posts.name}</p>
+      //         </div>`
+      //             detailDiv.innerHTML = output; 
+      //     });
+      //     document.querySelector('#result').innerHTML = output;
+      // };
 
 
       data_View();
+
+      document.getElementById("postpageBtn").addEventListener("click", function () {
+        window.open("postPage.html", "_blank", "width=800,height=700,top=100,left=100");
+      });
+
+      // document.getElementById("result").addEventListener("click", function () {
+      //   window.open("postDetail.html", "_blank", "width=800,height=700,top=100,left=100");
+      // });
+
+
     }  
   </script>
 </head>
@@ -144,6 +154,8 @@
       <div class="row">
         <div class="col-md-3 wow fadeInLeft delay-05s">
           <div class="section-title">
+            <button type="submit" class="btn btn-post" id="postpageBtn">new post</button>
+
             <h2 class="head-title">Posts</h2>
             <hr class="botm-line">
             <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -158,7 +170,6 @@
             <div class="icon-text">
               <div id="result"></div>
               <!-- <script>data_View(1)</script> -->
-              
               <div id="detail">상세 정보 나올 곳</div>
             </div>
           </div>
