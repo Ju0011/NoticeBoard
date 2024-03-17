@@ -42,15 +42,15 @@
         });
       //document.querySelector('#detail').innerHTML = output;
     };
-   
-    function deletePost(id){
-            fetch(`${requestUrl}/${id}` , {
-                method: "DELETE" 
-             })
-            .then((response) => response.json())
-            .then((result) =>console.log(result) ) 
-            .then((result) => location.reload() ) // 화면 새로고침
-        }
+
+    function deletePost(id) {
+      fetch(`${requestUrl}/${id}`, {
+        method: "DELETE"
+      })
+        .then((response) => response.json())
+        .then((result) => console.log(result))
+        .then((result) => location.reload()) // 화면 새로고침
+    }
 
 
     //웹브라우저에 이 페이지가 로드완료되면  다음 코드 실행   
@@ -77,19 +77,6 @@
           }).catch(error => console.log(error));
       };
 
-      //   function data_View(id) {
-      //   let output = '';
-      //   fetch(`${requestUrl}/${id}`, { method: "GET" })
-      //     .then((response) => response.json())
-      //     .then(json => {
-      //       output = `<div class="icon-text">
-      //           <h3 class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></h3>
-      //           <p class="txt-para">${posts.name}</p>
-      //         </div>`
-      //             detailDiv.innerHTML = output; 
-      //     });
-      //     document.querySelector('#result').innerHTML = output;
-      // };
 
 
       data_View();
@@ -128,6 +115,7 @@
                 <li><a href="#feature">Posts</a></li>
                 <li><a href="#portfolio">ABOUT_JU00</a></li>
                 <li><a href="#contact">Technology</a></li>
+                <li><a href="#join">Join</a></li>
               </ul>
             </div>
           </div>
@@ -168,8 +156,7 @@
 
             <h2 class="head-title">Posts</h2>
             <hr class="botm-line">
-            <p class="sec-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua..</p>
+            <p class="sec-para"></p>
           </div>
         </div>
         <div class="col-md-9">
@@ -179,7 +166,7 @@
             </div>
             <div class="icon-text">
               <div id="result"></div>
-              <!-- <script>data_View(1)</script> -->
+              <!-- <script>test_View(1)</script> -->
               <div id="detail">상세 정보 나올 곳</div>
             </div>
           </div>
@@ -250,7 +237,7 @@
           </div>
         </div>
         <div class="col-md-4 text-center">
-          <a href="#" class="btn btn-submit">Join Now</a>
+          <a href="#join" class="btn btn-submit">Join Now</a>
         </div>
       </div>
     </div>
@@ -318,6 +305,71 @@
         <div class="col-md-12 col-sm-12">
           <div class="col-md-4 col-sm-6" style="padding-left:0px;">
             <h3 class="cont-title">Email Us</h3>
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <div class="contact-info">
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                    data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validation"></div>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                    data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validation"></div>
+                </div>
+
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required"
+                    data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <button type="submit" class="btn btn-send">Send</button>
+              </form>
+            </div>
+
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <h3 class="cont-title">Visit Us</h3>
+            <div class="location-info">
+              <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>Via Principe Amedeo 9, Torino,
+                Italy</p>
+              <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Phone: 0039 333 12 68 347</p>
+              <p class="white"><span aria-hidden="true" class="fa fa-envelope"></span>Email: <a href=""
+                  class="link-dec">hi@yourdomain.com</a></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="contact-icon-container hidden-md hidden-sm hidden-xs">
+              <span aria-hidden="true" class="fa fa-envelope-o"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!---->
+  <!---->
+  <section class="section-padding wow fadeInUp delay-05s" id="join">
+    <div class="container">
+      <div class="row white">
+        <div class="col-md-8 col-sm-12">
+          <div class="section-title">
+            <h2 class="head-title black">Join</h2>
+            <hr class="botm-line">
+            <p class="sec-para black">Cat와 뭉쳐 더 넓고 깊어집니다.</p>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="col-md-4 col-sm-6" style="padding-left:0px;">
+            <h3 class="cont-title">Join Us</h3>
             <div id="sendmessage">Your message has been sent. Thank you!</div>
             <div id="errormessage"></div>
             <div class="contact-info">
