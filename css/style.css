@@ -30,7 +30,7 @@ table {
 }
 
 .section-padding {
-  padding: 60px 0px;
+  padding: 20px 0px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,10 +44,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-header {
-  /*background: url(../img/banner.jpeg) no-repeat;*/
+  /*메인 고양이 사진*/
   background: url(../img/banner.jpg) no-repeat;
   background-size: cover;
-  min-height: 610px;
+  min-height: 510px;
+}
+.join-header {
+  /*가입 고양이 사진*/
+  background: url(../img/cat_join.jpg) no-repeat;
+  background-size: cover;
+  min-height: 250px;
 }
 
 .bg-color {
@@ -167,7 +173,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-submit:hover {
-  background: #fff;
+  background: #21629e;
+  color: white;
 }
 
 .btn-post {
@@ -192,6 +199,10 @@ h1, h2, h3, h4, h5, h6 {
   /*border: 2px solid #FFD34E;*/
   border: 2px solid #99cf6d;
   float: right;
+}
+.btn-post:hover {
+  background: #67993f;
+  color: white;
 }
 
 /****/

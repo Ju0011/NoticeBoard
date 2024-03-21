@@ -53,6 +53,12 @@
     }
 
 
+//           <tr>
+    //     <td class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></td>
+    //     <td class="txt-para">${posts.name}</td>
+    //     <td class="center">${posts.detail.cont}</td>
+    // </tr>
+
     //웹브라우저에 이 페이지가 로드완료되면  다음 코드 실행   
     window.onload = function () {  // http://localhost:3000/posts     
       detailDiv = document.querySelector("#detail")
@@ -64,12 +70,15 @@
           .then(json => {
             let output = '';
             // 각 학생에 대한 정보를 반복하여 출력 문자열에 추가
-            json.forEach(posts => {
+            json.forEach((posts, logs) => {
               output += `
+    
               <div class="icon-text">
+              <h3 class="txt-tl"><a href='javascript:open_datil(${posts.id})'>  ${posts.title} </a></h3>
               <h3 class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></h3>
+              <p class="txt-para">${posts.detail.cont}</p>
               <p class="txt-para">${posts.name}</p>
-              <button onclick="deletePost(${posts.id});">삭제</button>
+              <button onclick="deletePost(${posts.id})">삭제</button>
             </div>`;
             });
             // 결과를 화면에 표시
@@ -85,6 +94,10 @@
         window.open("postPage.html", "_blank", "width=800,height=700,top=100,left=100");
       });
 
+      function open_datil(id){
+        window.open("showDatil.html", "_blank", "width=800,height=700,top=100,left=100");
+
+      }
       // document.getElementById("result").addEventListener("click", function () {
       //   window.open("postDetail.html", "_blank", "width=800,height=700,top=100,left=100");
       // });
@@ -115,7 +128,7 @@
                 <li><a href="#feature">Posts</a></li>
                 <li><a href="#portfolio">ABOUT_JU00</a></li>
                 <li><a href="#contact">Technology</a></li>
-                <li><a href="#join">Join</a></li>
+                <li><a href="join.html">Join</a></li>
               </ul>
             </div>
           </div>
@@ -152,7 +165,7 @@
       <div class="row">
         <div class="col-md-3 wow fadeInLeft delay-05s">
           <div class="section-title">
-            <button type="submit" class="btn btn-post" id="postpageBtn" value = "admin">new post</button>
+            <button type="submit" class="btn btn-post" id="postpageBtn" value="admin">new post</button>
 
             <h2 class="head-title">Posts</h2>
             <hr class="botm-line">
@@ -165,65 +178,77 @@
               <i class="fa fa-paint-brush"></i>
             </div>
             <div class="icon-text">
-              <div id="result"></div>
-              <!-- <script>test_View(1)</script> -->
-              <div id="detail">상세 정보 나올 곳</div>
+              <!--              -->
+              <div id="board-list">
+                <div class="container">
+                  <table class="board-table">
+
+                    <div id="result"></div>
+                  </table>
+                  <!-- <div id="result"></div> -->
+                  <!-- <script>test_View(1)</script> -->
+                  <div id="detail">상세 정보 나올 곳</div>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-02s">
+                <div class="icon">
+                  <i class="fa fa-cogs"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">게시글2</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula
+                    felis
+                    euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-04s">
+                <div class="icon">
+                  <i class="fa fa-mobile"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">게시글3</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula
+                    felis
+                    euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-04s">
+                <div class="icon">
+                  <i class="fa fa-desktop"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">No Coding, No Shortcodes</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula
+                    felis
+                    euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-06s">
+                <div class="icon">
+                  <i class="fa fa-lightbulb-o"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">High Coversion</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula
+                    felis
+                    euismod semper. </p>
+                </div>
+              </div>
+              <div class="col-md-6 wow fadeInRight delay-06s">
+                <div class="icon">
+                  <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="icon-text">
+                  <h3 class="txt-tl">Save Tons of Time</h3>
+                  <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula
+                    felis
+                    euismod semper. </p>
+                </div>
+                <button type="submit" class="btn btn-submit">More</button>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 wow fadeInRight delay-02s">
-            <div class="icon">
-              <i class="fa fa-cogs"></i>
-            </div>
-            <div class="icon-text">
-              <h3 class="txt-tl">게시글2</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
-                euismod semper. </p>
-            </div>
-          </div>
-          <div class="col-md-6 wow fadeInRight delay-04s">
-            <div class="icon">
-              <i class="fa fa-mobile"></i>
-            </div>
-            <div class="icon-text">
-              <h3 class="txt-tl">게시글3</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
-                euismod semper. </p>
-            </div>
-          </div>
-          <div class="col-md-6 wow fadeInRight delay-04s">
-            <div class="icon">
-              <i class="fa fa-desktop"></i>
-            </div>
-            <div class="icon-text">
-              <h3 class="txt-tl">No Coding, No Shortcodes</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
-                euismod semper. </p>
-            </div>
-          </div>
-          <div class="col-md-6 wow fadeInRight delay-06s">
-            <div class="icon">
-              <i class="fa fa-lightbulb-o"></i>
-            </div>
-            <div class="icon-text">
-              <h3 class="txt-tl">High Coversion</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
-                euismod semper. </p>
-            </div>
-          </div>
-          <div class="col-md-6 wow fadeInRight delay-06s">
-            <div class="icon">
-              <i class="fa fa-clock-o"></i>
-            </div>
-            <div class="icon-text">
-              <h3 class="txt-tl">Save Tons of Time</h3>
-              <p class="txt-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula felis
-                euismod semper. </p>
-            </div>
-            <button type="submit" class="btn btn-submit">More</button>
           </div>
         </div>
-      </div>
-    </div>
   </section>
   <!---->
   <section class="section-padding parallax bg-image-2 section wow fadeIn delay-08s" id="cta-2">
@@ -237,7 +262,7 @@
           </div>
         </div>
         <div class="col-md-4 text-center">
-          <a href="#join" class="btn btn-submit">Join Now</a>
+          <a href="join.html" class="btn btn-submit">Join Now</a>
         </div>
       </div>
     </div>
@@ -310,25 +335,25 @@
             <div class="contact-info">
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Name"
+                    data-rule="minlen:4" data-msg="이름을 입력해주세요." />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                    data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email"
+                    data-rule="email" data-msg="올바른 이메일 형식을 지켜주세요." />
                   <div class="validation"></div>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                    data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Phone"
+                    data-rule="minlen:4" data-msg="올바른 번호 형식이 아닙니다." />
                   <div class="validation"></div>
                 </div>
 
                 <div class="form-group">
                   <textarea class="form-control" name="message" rows="5" data-rule="required"
-                    data-msg="Please write something for us" placeholder="Message"></textarea>
+                    data-msg="경로를 입력해주세요" placeholder="Sign up path"></textarea>
                   <div class="validation"></div>
                 </div>
                 <button type="submit" class="btn btn-send">Send</button>
@@ -355,71 +380,8 @@
       </div>
     </div>
   </section>
-  <!---->
-  <!---->
-  <section class="section-padding wow fadeInUp delay-05s" id="join">
-    <div class="container">
-      <div class="row white">
-        <div class="col-md-8 col-sm-12">
-          <div class="section-title">
-            <h2 class="head-title black">Join</h2>
-            <hr class="botm-line">
-            <p class="sec-para black">Cat와 뭉쳐 더 넓고 깊어집니다.</p>
-          </div>
-        </div>
-        <div class="col-md-12 col-sm-12">
-          <div class="col-md-4 col-sm-6" style="padding-left:0px;">
-            <h3 class="cont-title">Join Us</h3>
-            <div id="sendmessage">Your message has been sent. Thank you!</div>
-            <div id="errormessage"></div>
-            <div class="contact-info">
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                    data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
-                </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                    data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required"
-                    data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <button type="submit" class="btn btn-send">Send</button>
-              </form>
-            </div>
-
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <h3 class="cont-title">Visit Us</h3>
-            <div class="location-info">
-              <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>Via Principe Amedeo 9, Torino,
-                Italy</p>
-              <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Phone: 0039 333 12 68 347</p>
-              <p class="white"><span aria-hidden="true" class="fa fa-envelope"></span>Email: <a href=""
-                  class="link-dec">hi@yourdomain.com</a></p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="contact-icon-container hidden-md hidden-sm hidden-xs">
-              <span aria-hidden="true" class="fa fa-envelope-o"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
   <!---->
   <!---->
   <footer class="" id="footer">
