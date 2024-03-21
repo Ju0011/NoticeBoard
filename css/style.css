@@ -44,13 +44,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-header {
-  /*메인 고양이 사진*/
+  /*메인화면 고양이 사진*/
   background: url(../img/banner.jpg) no-repeat;
   background-size: cover;
   min-height: 510px;
 }
 .join-header {
-  /*가입 고양이 사진*/
+  /*가입화면 고양이 사진*/
   background: url(../img/cat_join.jpg) no-repeat;
   background-size: cover;
   min-height: 250px;

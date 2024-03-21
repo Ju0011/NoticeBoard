@@ -54,9 +54,48 @@
       "date": "2019-05-31T15:46:48.690Z"
     }
   ],
-  "member":[
+  "member": [
+    {},
     {
-
+      "id": "pjy8103",
+      "name": "test",
+      "password": "qkrwndud8103",
+      "email": "yhs07240@skuniv.ac.kr",
+      "phone": "01199128103"
+    },
+    {
+      "id": "a224"
+    },
+    {
+      "id": "f3fc"
+    },
+    {
+      "id": "",
+      "name": "",
+      "password": "",
+      "email": "",
+      "phone": ""
+    },
+    {
+      "id": "",
+      "name": "",
+      "password": "",
+      "email": "",
+      "phone": ""
+    },
+    {
+      "id": "",
+      "name": "",
+      "password": "",
+      "email": "",
+      "phone": ""
+    },
+    {
+      "id": "",
+      "name": "",
+      "password": "",
+      "email": "",
+      "phone": ""
     }
   ]
 }
