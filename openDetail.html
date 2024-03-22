@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>상세페이지</title>
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords"
+        content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet'
+        type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!--me-->
+    <script src="./posts/common/common.js"></script>
+    <script>
+        requestUrl = `${backEndDomain}/posts`
+
+        const pageurl = window.location.href; //현재 url 가져오기 
+        
+        const urlSearchParamsObject = new URL(pageurl);
+        const urlId = urlSearchParamsObject.searchParams;    
+        now_id = urlId.get('id');  
+
+        function write_title(id) {
+            let output = '';      
+            fetch(`${requestUrl}/${id}`, { method: "GET" })
+                .then((response) => response.json())
+                .then(json => {
+                    output = `<tr><td>${json.title}</td></tr>`
+                    detailTitle.innerHTML = output;
+                });
+        }
+        function write_name(id) {
+            let output = '';      
+            fetch(`${requestUrl}/${id}`, { method: "GET" })
+                .then((response) => response.json())
+                .then(json => {
+                    output = `<tr><td>${json.name}</td></tr>`
+                    detailName.innerHTML = output;
+                });
+        }
+        function write_cont(id) {
+            let output = '';      
+            fetch(`${requestUrl}/${id}`, { method: "GET" })
+                .then((response) => response.json())
+                .then(json => {
+                    output = `<tr><td>${json.detail.cont}</td></tr>`
+                    detailDiv.innerHTML = output;
+                });
+        }
+
+        //웹브라우저에 이 페이지가 로드완료되면  다음 코드 실행   
+        window.onload = function () {  // NoticeBoard/openDetail.html?id=1   
+            detailTitle = document.querySelector("#title");
+            detailName = document.querySelector("#name");
+            detailDiv = document.querySelector("#inner");
+        }
+        
+        write_title(now_id);
+        write_name(now_id);
+        write_cont(now_id);
+    </script>
+
+</head>
+
+<body>
+    
+    <!--header-->
+    <header class="join-header" id="header">
+        <div class="bg-color">
+            <!--nav-->
+            <nav class="nav navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="fa fa-bars"></span>
+                            </button>
+                            <a href="index.html" class="navbar-brand">AboutCat</a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="main.html">Home</a></li>
+                                <li><a href="#feature">Posts</a></li>
+                                <li><a href="#portfolio">ABOUT_JU00</a></li>
+                                <li><a href="#contact">Technology</a></li>
+                                <li><a href="#join">Join</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!--/ nav-->
+        </div>
+    </header>
+    <!--/ header-->
+
+    <section class="section-padding wow fadeInUp delay-05s" id="join">
+        <div class="container">
+            <div class="row white">
+                <div class="col-md-8 col-sm-12">
+                    <div class="section-title">
+                        <h2 class="head-title black" id="title"></h2>
+                        <div id="name"></div>
+                        <hr class="botm-line">
+                        <div id="inner"></div>
+                        <p class="sec-para black"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+    <footer class="" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 footer-copyright">
+                    © Bethany Theme - All rights reserved
+                    <div class="credits">
+
+                        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    </div>
+                </div>
+                <div class="col-sm-5 footer-social">
+                    <div class="pull-right hidden-xs hidden-sm">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!---->
+    <!--contact ends-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="contactform/contactform.js"></script>
+
+
+
+
+</body>
+
+</html>

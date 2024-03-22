@@ -28,19 +28,8 @@
   <script>
     requestUrl = `${backEndDomain}/posts`
 
-    var detailDiv = ""
-
-    function detail_View(id) {
-      let output = '';
-      // id외 속성으로 조회 시에 쿼리 스티링 ==>  http://localhost:3000/posts?red_dtm=2024-03-11
-      // id 속성 값으로 조회 시에는 아래와 같이 PathParameter ==> http://localhost:3000/posts/1
-      fetch(`${requestUrl}/${id}`, { method: "GET" })
-        .then((response) => response.json())
-        .then(json => {
-          output = `<tr><td>${json.detail.cont}</td></tr>`
-          detailDiv.innerHTML = output;
-        });
-      //document.querySelector('#detail').innerHTML = output;
+    function openDetail(id) {
+      window.open("openDetail.html");
     };
 
     function deletePost(id) {
@@ -53,7 +42,7 @@
     }
 
 
-//           <tr>
+    //           <tr>
     //     <td class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></td>
     //     <td class="txt-para">${posts.name}</td>
     //     <td class="center">${posts.detail.cont}</td>
@@ -61,7 +50,6 @@
 
     //웹브라우저에 이 페이지가 로드완료되면  다음 코드 실행   
     window.onload = function () {  // http://localhost:3000/posts     
-      detailDiv = document.querySelector("#detail")
 
       function data_View() {
         //get method
@@ -71,16 +59,13 @@
             let output = '';
             // 각 학생에 대한 정보를 반복하여 출력 문자열에 추가
             json.forEach((posts, logs) => {
-              output += `
-    
-              <div class="icon-text">
-              <h3 class="txt-tl"><a href='javascript:open_datil(${posts.id})'>  ${posts.title} </a></h3>
-              <h3 class="txt-tl"><a href='javascript:detail_View(${posts.id})'>  ${posts.title} </a></h3>
+              output += `               
+              <h3 class="txt-tl"><a href='./openDetail.html?id=${posts.id}'>  ${posts.title} </a></h3>
               <p class="txt-para">${posts.detail.cont}</p>
               <p class="txt-para">${posts.name}</p>
-              <button onclick="deletePost(${posts.id})">삭제</button>
-            </div>`;
+              <button onclick="deletePost(${posts.id})">삭제</button>`;
             });
+
             // 결과를 화면에 표시
             document.querySelector('#result').innerHTML = output;
           }).catch(error => console.log(error));
@@ -94,10 +79,10 @@
         window.open("postPage.html", "_blank", "width=800,height=700,top=100,left=100");
       });
 
-      function open_datil(id){
-        window.open("showDatil.html", "_blank", "width=800,height=700,top=100,left=100");
 
-      }
+
+
+
       // document.getElementById("result").addEventListener("click", function () {
       //   window.open("postDetail.html", "_blank", "width=800,height=700,top=100,left=100");
       // });
@@ -160,16 +145,16 @@
   </section>
   <!---->
   <!---->
+
   <section id="feature" class="section-padding">
     <div class="container">
       <div class="row">
         <div class="col-md-3 wow fadeInLeft delay-05s">
           <div class="section-title">
-            <button type="submit" class="btn btn-post" id="postpageBtn" value="admin">new post</button>
-
             <h2 class="head-title">Posts</h2>
             <hr class="botm-line">
-            <p class="sec-para"></p>
+            <button type="submit" class="btn btn-post" id="postpageBtn" value="admin">new post</button>
+            <!-- <p class="sec-para"></p> -->
           </div>
         </div>
         <div class="col-md-9">
@@ -178,18 +163,8 @@
               <i class="fa fa-paint-brush"></i>
             </div>
             <div class="icon-text">
-              <!--              -->
-              <div id="board-list">
-                <div class="container">
-                  <table class="board-table">
-
-                    <div id="result"></div>
-                  </table>
-                  <!-- <div id="result"></div> -->
-                  <!-- <script>test_View(1)</script> -->
-                  <div id="detail">상세 정보 나올 곳</div>
-                </div>
-              </div>
+              <div id="result"></div>
+            </div>
               <div class="col-md-6 wow fadeInRight delay-02s">
                 <div class="icon">
                   <i class="fa fa-cogs"></i>
@@ -335,13 +310,13 @@
             <div class="contact-info">
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Name"
-                    data-rule="minlen:4" data-msg="이름을 입력해주세요." />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Name" data-rule="minlen:4"
+                    data-msg="이름을 입력해주세요." />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email"
-                    data-rule="email" data-msg="올바른 이메일 형식을 지켜주세요." />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email"
+                    data-msg="올바른 이메일 형식을 지켜주세요." />
                   <div class="validation"></div>
                 </div>
 
@@ -352,8 +327,8 @@
                 </div>
 
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required"
-                    data-msg="경로를 입력해주세요" placeholder="Sign up path"></textarea>
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="경로를 입력해주세요"
+                    placeholder="Sign up path"></textarea>
                   <div class="validation"></div>
                 </div>
                 <button type="submit" class="btn btn-send">Send</button>
@@ -381,7 +356,7 @@
     </div>
   </section>
 
-  
+
   <!---->
   <!---->
   <footer class="" id="footer">

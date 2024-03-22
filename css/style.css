@@ -11,15 +11,20 @@ body {
   overflow-x: hidden;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after, q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none;
 }
@@ -30,10 +35,15 @@ table {
 }
 
 .section-padding {
-  padding: 20px 0px;
+  padding: 20px 50px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Lato', sans-serif;
 }
 
@@ -49,6 +59,7 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   min-height: 510px;
 }
+
 .join-header {
   /*가입화면 고양이 사진*/
   background: url(../img/cat_join.jpg) no-repeat;
@@ -78,20 +89,23 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 2px;
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
   color: #FFD34E;
   text-transform: uppercase;
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .navbar-default .navbar-nav>li>a {
   color: #fff;
   padding: 10px 20px;
   text-transform: uppercase;
-	background-color: transparent;
+  background-color: transparent;
 }
 
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
   color: #FFD34E;
 }
 
@@ -101,10 +115,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-	.navbar-collapse {
-		background: rgba(0, 0, 0, 0.8);
-		border-top: 0;
-	}
+  .navbar-collapse {
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 0;
+  }
 }
 
 .top-nav-collapse {
@@ -196,10 +210,11 @@ h1, h2, h3, h4, h5, h6 {
   -ms-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   margin-top: 25px;
-  /*border: 2px solid #FFD34E;*/
+  
   border: 2px solid #99cf6d;
   float: right;
 }
+
 .btn-post:hover {
   background: #67993f;
   color: white;
@@ -283,6 +298,7 @@ p {
 h3.txt-tl {
   font-size: 24px;
   line-height: 1.35;
+  
 }
 
 /****/
@@ -365,7 +381,9 @@ h3.txt-tl {
   margin-bottom: 15px;
 }
 
-#sendmessage.show, #errormessage.show, .show {
+#sendmessage.show,
+#errormessage.show,
+.show {
   display: block;
 }
 
@@ -380,7 +398,8 @@ h3.txt-tl {
   background-color: #FFD34E;
 }
 
-a, a:hover {
+a,
+a:hover {
   color: #163966;
 }
 
@@ -429,6 +448,8 @@ a, a:hover {
 #footer {
   background-color: #191919;
   padding: 20px 0px;
+  
+
 }
 
 .footer-copyright {
@@ -446,7 +467,8 @@ a, a:hover {
   color: #666;
 }
 
-.link-dec, .link-dec:hover {
+.link-dec,
+.link-dec:hover {
   color: #000;
 }
 
@@ -459,42 +481,59 @@ a, a:hover {
 }
 
 @media (min-width: 20px) and (max-width: 450px) {
-  .navbar-toggle:hover, .navbar-toggle {
+
+  .navbar-toggle:hover,
+  .navbar-toggle {
     background-color: #fff;
     color: #000;
   }
+
   .navbar-toggle {
     margin-top: 0px;
   }
+
   .navbar-default .navbar-nav>li>a {
     text-align: center;
   }
-  .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-  }
+
+  .navbar-default .navbar-nav>.active>a,
+  .navbar-default .navbar-nav>.active>a:focus,
+  .navbar-default .navbar-nav>.active>a:hover,
+  .navbar-default .navbar-nav>li>a:hover,
+  .navbar-default .navbar-nav>li>a:focus {}
+
   .top-title {
     font-size: 15px;
   }
+
   .title {
     font-size: 50px;
   }
+
   .sub-title {
     font-size: 24px;
   }
+
   .footer-copyright {
     text-align: center;
   }
+
   .padding-right-zero {
     padding-right: 15px;
   }
+
   .section-title {
     margin-bottom: 15px;
   }
+
   .cta-txt h3 {
     font-size: 28px;
   }
+
   body {
     font-size: 14px;
   }
+
   h3.txt-tl {
     font-size: 20px;
   }
